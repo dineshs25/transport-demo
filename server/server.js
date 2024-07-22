@@ -17,7 +17,7 @@ const app = express();
 app.use(express.json())
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
-const allowedOrigins = ['http://localhost:3000', 'https://stunning-clafoutis-997a63.netlify.app'];
+const allowedOrigins = ['http://localhost:3000', 'https://mr-piligrim.netlify.app'];
 
 app.use(
     cors({
