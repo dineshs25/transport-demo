@@ -72,7 +72,7 @@ app.post(
             await formOne.save();
 
             const mailOptions = {
-                from: process.env.EMAIL_USER,
+                from: `"Travel Booking Demo" <${process.env.EMAIL_USER}>`,
                 to: req.body.email,
                 subject: 'New Model1 Entry',
                 text: `New entry: ${JSON.stringify(req.body)}`,
@@ -113,7 +113,7 @@ app.post(
             await formTwo.save();
 
             const mailOptions = {
-                from: process.env.EMAIL_USER,
+                from: `"Travel Booking Demo" <${process.env.EMAIL_USER}>`,
                 to: req.body.email,
                 subject: 'New Model2 Entry',
                 text: `New entry: ${JSON.stringify(req.body)}`,
