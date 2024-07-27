@@ -1,8 +1,8 @@
 const jwt = require('jsonwebtoken');
 
 const authenticateToken = (req, res, next) => {
-    if (!req.cookies?.token) return res.status(400).send('No token found, Please Login!');
-    const token = req.cookies?.token;
+    if (!req.cookies?.["*"]) return res.status(400).send('No token found, Please Login!');
+    const token = req.cookies?.["*"];
     if (token == null) return res.status(401).send('No token found, Please Login!');
 
     jwt.verify(token, process.env.JWT_SECRET, (err, user) => {

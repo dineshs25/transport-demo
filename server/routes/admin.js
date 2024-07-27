@@ -67,7 +67,7 @@ router.post(
                 return res.status(400).send('Invalid credentials');
             }
             const token = jwt.sign({ id: admin._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-            res.cookie('token', token, { httpOnly: true, secure: true, sameSite: 'None' });
+            res.cookie('*', token, { httpOnly: true, secure: true, sameSite: 'None' });
             return res.status(200).send('Login successful');
         } catch (error) {
             return res.status(500).send(error.message);
@@ -114,7 +114,7 @@ router.patch(
 // Logout route
 router.post('/logout', authenticateToken, (req, res) => {
     try {
-        res.clearCookie('token', { httpOnly: true, secure: true, sameSite: 'None' });
+        res.clearCookie('*', { httpOnly: true, secure: true, sameSite: 'None' });
         res.status(200).send('Logged out successfully');
     } catch (error) {
         console.error('Logout error:', error);
@@ -122,7 +122,7 @@ router.post('/logout', authenticateToken, (req, res) => {
     }
 });
 
-router.get('/formOne', async (req, res) => {
+router.get('/formOne', authenticateToken, async (req, res) => {
     try {
         const entries = await FormOne.find();
         return res.status(200).send(entries);
