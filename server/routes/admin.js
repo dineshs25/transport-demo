@@ -8,6 +8,9 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const authenticateToken = require('../middleware/authenticateToken');
 
+router.get('/', (req, res) => {
+    res.send("Hello")
+})
 // Register
 router.post(
     '/register',
@@ -119,7 +122,7 @@ router.post('/logout', authenticateToken, (req, res) => {
     }
 });
 
-router.get('/formOne', authenticateToken, async (req, res) => {
+router.get('/formOne', async (req, res) => {
     try {
         const entries = await FormOne.find();
         return res.status(200).send(entries);
