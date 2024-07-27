@@ -5,19 +5,19 @@ const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 const cors = require('cors');
 const { body, validationResult } = require('express-validator');
-
-// Models
 const FormOne = require('./models/formOne');
 const FormTwo = require('./models/formTwo');
+const authenticateToken = require('./middleware/authenticateToken');
+const cookieParser = require('cookie-parser');
+const adminRoutes = require('./routes/admin');
 
-// Initialize Express
 const app = express();
 
-// Middleware
+app.use(cookieParser());
 app.use(express.json())
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
-const allowedOrigins = ['http://localhost:3000', 'http://localhost:5173','http://localhost:5174','https://mr-piligrim.netlify.app'];
+const allowedOrigins = ['http://localhost:3000', 'http://localhost:5173', 'http://localhost:5174', 'https://mr-piligrim.netlify.app'];
 
 app.use(
     cors({
@@ -40,7 +40,6 @@ mongoose.connect(process.env.MONGODB_API)
         console.log('DB Connection failed');
     });
 
-// Nodemailer setup
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
@@ -49,7 +48,8 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-// Routes
+app.use('/admin', adminRoutes);
+
 app.post(
     '/formOne',
     [
@@ -134,7 +134,7 @@ app.post(
     }
 );
 
-app.get('/formOne', async (req, res) => {
+app.get('/formOne', authenticateToken, async (req, res) => {
     try {
         const entries = await FormOne.find();
         return res.status(200).send(entries);
@@ -143,7 +143,7 @@ app.get('/formOne', async (req, res) => {
     }
 });
 
-app.get('/formTwo', async (req, res) => {
+app.get('/formTwo', authenticateToken, async (req, res) => {
     try {
         const entries = await FormTwo.find();
         return res.status(200).send(entries);
@@ -153,10 +153,9 @@ app.get('/formTwo', async (req, res) => {
 });
 
 app.get("/", (req, res) => {
-    res.send("Hello hy")
+    res.redirect('https://mr-piligrim.netlify.app')
 })
 
-// Start the server
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
