@@ -54,8 +54,8 @@ app.post(
     '/formOne',
     [
         body('name').notEmpty().withMessage('Name is required'),
-        body('location').notEmpty().withMessage('Location is required'),
-        body('services').isIn(['local temple packages', 'hotel booking', 'personal guide', 'local cab', 'only freshup']).withMessage('Invalid service'),
+        body('services').isIn(['Local temple packages', 'Hotel booking', 'Cab booking', 'Only Freshup', 'Tour Guide']).withMessage('Invalid service'),
+        body('locations').isIn(['Tirupati ', 'Tiruvannamalai ', 'Madurai ', 'Srikalahasthi', 'Kanipakam', 'Kanchipuram', 'Rameswaram', 'Srirangam']).withMessage('Invalid Location'),
         body('travellingDate').isDate().withMessage('Travelling date must be a valid date'),
         body('numberOfAdults').isInt({ min: 0 }).withMessage('Number of adults must be a positive integer'),
         body('numberOfKids').isInt({ min: 0 }).withMessage('Number of kids must be a positive integer'),
@@ -100,7 +100,8 @@ app.post(
         body('name').notEmpty().withMessage('Name is required'),
         body('phone').notEmpty().withMessage('Phone is required'),
         body('email').isEmail().withMessage('Email must be valid'),
-        body('services').isIn(['packages', 'cabs', 'hotels', 'freshup', 'personal guide']).withMessage('Invalid service'),
+        body('locations').isIn(['Tirupati ', 'Tiruvannamalai ', 'Madurai ', 'Srikalahasthi', 'Kanipakam', 'Kanchipuram', 'Rameswaram', 'Srirangam']).withMessage('Invalid Location'),
+        body('services').isIn(['Local temple packages', 'Hotel booking', 'Cab booking', 'Only Freshup', 'Tour Guide']).withMessage('Invalid service'),
     ],
     async (req, res) => {
         const errors = validationResult(req);
@@ -133,24 +134,6 @@ app.post(
         }
     }
 );
-
-app.get('/formOne', authenticateToken, async (req, res) => {
-    try {
-        const entries = await FormOne.find();
-        return res.status(200).send(entries);
-    } catch (error) {
-        return res.status(500).send(error.message);
-    }
-});
-
-app.get('/formTwo', authenticateToken, async (req, res) => {
-    try {
-        const entries = await FormTwo.find();
-        return res.status(200).send(entries);
-    } catch (error) {
-        return res.status(500).send(error.message);
-    }
-});
 
 app.get("/", (req, res) => {
     res.redirect('https://mr-piligrim.netlify.app')

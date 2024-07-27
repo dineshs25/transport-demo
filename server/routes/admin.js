@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const Admin = require('../models/admin');
+const FormOne = require('../models/formOne');
+const FormTwo = require('../models/formTwo');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const authenticateToken = require('../middleware/authenticateToken');
@@ -114,6 +116,24 @@ router.post('/logout', authenticateToken, (req, res) => {
     } catch (error) {
         console.error('Logout error:', error);
         res.status(500).send('An error occurred during logout');
+    }
+});
+
+router.get('/formOne', authenticateToken, async (req, res) => {
+    try {
+        const entries = await FormOne.find();
+        return res.status(200).send(entries);
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
+});
+
+router.get('/formTwo', authenticateToken, async (req, res) => {
+    try {
+        const entries = await FormTwo.find();
+        return res.status(200).send(entries);
+    } catch (error) {
+        return res.status(500).send(error.message);
     }
 });
 

@@ -6,9 +6,14 @@ const formTwoSchema = new mongoose.Schema({
     email: { type: String, required: true },
     services: {
         type: String,
-        enum: ['packages', 'cabs', 'hotels', 'freshup', 'personal guide'],
+        enum: ['Local temple packages', 'Hotel booking', 'Cab booking', 'Only Freshup', 'Tour Guide'],
         required: true
     },
+    locations: {
+        type: String,
+        enum: ['Tirupati ', 'Tiruvannamalai ', 'Madurai ', 'Srikalahasthi', 'Kanipakam', 'Kanchipuram', 'Rameswaram', 'Srirangam'],
+        required: true
+    }
 });
 
 module.exports = mongoose.model('FormTwo', formTwoSchema);
