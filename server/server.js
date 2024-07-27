@@ -17,7 +17,7 @@ app.use(cookieParser());
 app.use(express.json())
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true, limit: '50mb' }));
-const allowedOrigins = ['http://localhost:3000', 'http://localhost:5173', 'http://localhost:5174', 'https://mr-piligrim.netlify.app'];
+const allowedOrigins = ['http://localhost:3000', 'http://localhost:5173', 'http://localhost:5174', 'https://mr-piligrim.netlify.app', 'https://stunning-salmiakki-e904b4.netlify.app'];
 
 app.use(
     cors({
