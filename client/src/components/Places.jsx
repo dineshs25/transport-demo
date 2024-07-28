@@ -5,6 +5,7 @@ import { placesData } from '../data/data'; // Import data
 const Places = () => {
   return (
      <div className="container">
+      <h4 className='titles-main' >Our Specialized Services</h4>
     <div className="places-container">
      {placesData.map((item, index) => (
         <div key={index} className="places-item">

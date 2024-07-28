@@ -1,6 +1,13 @@
+.titles-main{
+  font-size: 24px;
+  font-weight: 600;
+  color: #f46206;
+  text-align: center;
+  margin-block: 0.1rem 4rem;
+}
+
 .packages-sec{
     
-
 .card__wrapper {
     display: flex;
     flex-direction: row;
@@ -11,11 +18,12 @@
     display: flex;
     width: 100%;
     padding: 1rem;
-    background-color: #252525;
+    background-color: #fff;
     border-radius: 0px 0px 12px 12px;
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
+    border: 1px solid #f46206;
   }
   
   .card__info {
@@ -33,27 +41,30 @@
   }
   
   .card__info span {
-    color: #fff;
-    font-size: 16px;
+    color: #f46206;
+    font-size: 14px;
     font-weight: 500;
   }
   
   .card__info p {
-    color: #919191;
-    font-size: 13px;
+    color: #000;
+    font-size: 12px;
     font-weight: 400;
+    width: 90%;
   }
   
   button {
     padding: 5px 10px;
     border-radius: 10px;
     font-size: 14px;
+    width: 140px;
   background-color: #f46206;
     font-weight: 400;
     color: #fff;
     font-family: inherit;
     cursor: pointer;
     transition: 0.3s all ease;
+    border: none;
   
     span {
       font-size: 12px;

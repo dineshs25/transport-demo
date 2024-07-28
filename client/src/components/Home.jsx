@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 // // import React from 'react'
 // // import Places from './Places'
 // // import Services from './Services'
@@ -35,13 +37,13 @@ import TourSwiper from './Banner';
 import About from './About';
 import Places from './Places';
 import Services from './Services';
-import HowItWorks from './HowItWorks';
 import Packages from './Packages';
 import CircleMenu from './Slider';
 import TestimonialsSlider from './Testimonals';
 import Faq from './Faq';
 import Footer from './Footer';
-import FormOne from './Form';
+import ContactForm from './FormTwo';
+import WhatsAppButton from './Whatsapp';
 
 const useIntersectionObserver = (options) => {
   const [entry, setEntry] = useState({});
@@ -97,15 +99,19 @@ const Home = () => {
     <div>
       <Navbar />
       <AnimatedSection><TourSwiper /></AnimatedSection>
-      <FormOne/>
       <AnimatedSection><About /></AnimatedSection>
       <AnimatedSection><Places /></AnimatedSection>
       <AnimatedSection><Services /></AnimatedSection>
+      {/* <AnimatedSection><CircleMenu /></AnimatedSection> */}
       <AnimatedSection><Packages /></AnimatedSection>
-      <AnimatedSection><CircleMenu /></AnimatedSection>
       <AnimatedSection><TestimonialsSlider /></AnimatedSection>
-      <AnimatedSection><Faq /></AnimatedSection>
+      <AnimatedSection>
+        <ContactForm/>
+      </AnimatedSection>
+
+    
       <Footer/>
+      <WhatsAppButton/>
     </div>
   );
 };

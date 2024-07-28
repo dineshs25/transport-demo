@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { Input, Button, Select, DatePicker, InputNumber, Form, Divider } from 'antd';
+import { Input, Button, Select, DatePicker, Form } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
 const { Option } = Select;
@@ -17,13 +18,29 @@ const FormComponent = () => {
   const { handleSubmit, control, reset } = useForm();
   const navigate = useNavigate();
 
-  const onSubmit = (data) => {
-    const existingData = JSON.parse(localStorage.getItem('formData')) || [];
-    const updatedData = [...existingData, data];
-    localStorage.setItem('formData', JSON.stringify(updatedData));
-    reset();
-    navigate('/table');
-    console.log("data",data)
+  const onSubmit = async (data) => {
+    try {
+      const response = await fetch('https://transport-demo-p9rh.onrender.com/formTwo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        alert('Form submitted successfully!');
+        console.log("Response data", result);
+        reset();
+        navigate('/table');
+      } else {
+        throw new Error('Failed to submit form');
+      }
+    } catch (error) {
+      console.error('There was an error!', error);
+      alert('Failed to submit form');
+    }
   };
 
   return (
@@ -65,9 +82,9 @@ const FormComponent = () => {
         <Controller
           name="adults"
           control={control}
-          defaultValue={1}
+          defaultValue=""
           render={({ field }) => (
-            <InputNumber min={1} {...field} />
+            <Input type="number" {...field} min={1} />
           )}
         />
       </Form.Item>
@@ -76,9 +93,9 @@ const FormComponent = () => {
         <Controller
           name="children"
           control={control}
-          defaultValue={0}
+          defaultValue=""
           render={({ field }) => (
-            <InputNumber min={0} {...field} />
+            <Input type="number" {...field} min={0} />
           )}
         />
       </Form.Item>
@@ -93,7 +110,7 @@ const FormComponent = () => {
       </Form.Item>
 
       <Form.Item>
-        <Button type="primary" htmlType="submit">Submit</Button>
+        <Button type="primary" htmlType="submit">Get customised quote</Button>
       </Form.Item>
     </Form>
   );

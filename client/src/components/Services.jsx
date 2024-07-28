@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // // Services.js
 // import React from 'react';
 // import { servicesData } from '../data/data'; // Import services data
@@ -98,6 +99,7 @@ import { servicesData } from '../data/data'; // Import services data
 const Services = () => {
   return (
     <div className="services-container">
+      <h4 className='titles-main' >Our Specialized Services</h4>
      <div className="container">
      <section>
         <div className="row">
@@ -105,7 +107,7 @@ const Services = () => {
             <div className="column" key={index}>
               <div className="card">
                 <div className="icon-wrapper">
-                  <i className={service.icon}></i>
+                  <img src={service.icon} alt="" />
                 </div>
                 <h3>{service.title}</h3>
                 <p>{service.description}</p>

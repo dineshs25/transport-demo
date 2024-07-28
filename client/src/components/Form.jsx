@@ -1,6 +1,8 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { Form, Input, Button, DatePicker, Select, Row, Col } from 'antd';
 import axios from 'axios';
+import moment from 'moment';
 
 const { Option } = Select;
 
@@ -8,7 +10,7 @@ const FormOne = () => {
   const [form] = Form.useForm();
   const [formData, setFormData] = useState({
     name: '',
-    location: '',
+    locations: '',
     services: '',
     travellingDate: '',
     numberOfAdults: 0,
@@ -21,12 +23,17 @@ const FormOne = () => {
   };
 
   const handleSubmit = async (values) => {
+    const formattedValues = {
+      ...values,
+      travellingDate: values.travellingDate ? moment(values.travellingDate).format('YYYY-MM-DD') : '',
+    };
+    console.log('Submitting form data:', formattedValues); // Log form data for debugging
     try {
-      const response = await axios.post('https://transport-demo-pm9rh.onrender.com/formOne', values);
+      const response = await axios.post('https://transport-demo-p9rh.onrender.com/formOne', formattedValues);
       console.log(response.data);
       // Handle successful form submission (e.g., display a success message or clear the form)
     } catch (error) {
-      console.error('There was an error submitting the form!', error);
+      console.error('There was an error submitting the form!', error.response ? error.response.data : error.message);
       // Handle error (e.g., display an error message)
     }
   };
@@ -62,7 +69,18 @@ const FormOne = () => {
         name="location"
         rules={[{ required: true, message: 'Please input your location!' }]}
       >
-        <Input placeholder="Location" onChange={(e) => handleChange('location', e.target.value)} />
+        {/* <Input placeholder="Location" onChange={(e) => handleChange('locations', e.target.value)} /> */}
+        <Select placeholder="Select a location" onChange={(value) => handleChange('locations', value)}>
+          <Option value="Tirupati ">Tirupati </Option>
+          <Option value="Tiruvannamalai ">Tiruvannamalai </Option>
+          <Option value="Madurai ">Madurai </Option>
+          <Option value="Srikalahasthi ">Srikalahasthi </Option>
+          <Option value="Kanipakam ">Kanipakam </Option>
+          <Option value="Kanchipuram ">Kanchipuram </Option>
+          <Option value="Rameswaram ">Rameswaram </Option>
+          <Option value="Srirangam ">Srirangam </Option>
+
+        </Select>
       </Form.Item>
 
       <Form.Item
@@ -71,11 +89,11 @@ const FormOne = () => {
         rules={[{ required: true, message: 'Please select a service!' }]}
       >
         <Select placeholder="Select a service" onChange={(value) => handleChange('services', value)}>
-          <Option value="local temple packages">Local Temple Packages</Option>
-          <Option value="hotel booking">Hotel Booking</Option>
-          <Option value="personal guide">Personal Guide</Option>
-          <Option value="local cab">Local Cab</Option>
-          <Option value="only freshup">Only Freshup</Option>
+          <Option value="Local temple packages">Local Temple Packages</Option>
+          <Option value="Hotel booking">Hotel Booking</Option>
+          <Option value="Tour Guide">Tour Guide</Option>
+          <Option value="Cab booking">Local Cab</Option>
+          <Option value="Only Freshup">Only Freshup</Option>
         </Select>
       </Form.Item>
 
@@ -125,7 +143,7 @@ const FormOne = () => {
 
       <Form.Item>
         <Button type="primary" htmlType="submit">
-          Submit
+          Get customised quote
         </Button>
       </Form.Item>
     </Form>
