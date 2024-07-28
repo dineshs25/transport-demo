@@ -12,7 +12,7 @@ const formOneSchema = new mongoose.Schema({
     numberOfKids: { type: Number, required: true },
     email: { type: String, required: true },
     phone: { type: String, required: true },
-    locations: {
+    location: {
         type: String,
         enum: ['Tirupati ', 'Tiruvannamalai ', 'Madurai ', 'Srikalahasthi', 'Kanipakam', 'Kanchipuram', 'Rameswaram', 'Srirangam'],
         required: true

@@ -56,7 +56,7 @@ app.post(
         body('name').notEmpty().withMessage('Name is required'),
         body('phone').notEmpty().withMessage('Phone is required'),
         body('services').isIn(['Local temple packages', 'Hotel booking', 'Cab booking', 'Only Freshup', 'Tour Guide']).withMessage('Invalid service'),
-        body('locations').isIn(['Tirupati ', 'Tiruvannamalai ', 'Madurai ', 'Srikalahasthi', 'Kanipakam', 'Kanchipuram', 'Rameswaram', 'Srirangam']).withMessage('Invalid Location'),
+        body('location').isIn(['Tirupati ', 'Tiruvannamalai ', 'Madurai ', 'Srikalahasthi', 'Kanipakam', 'Kanchipuram', 'Rameswaram', 'Srirangam']).withMessage('Invalid Location'),
         body('travellingDate').isDate().withMessage('Travelling date must be a valid date'),
         body('numberOfAdults').isInt({ min: 0 }).withMessage('Number of adults must be a positive integer'),
         body('numberOfKids').isInt({ min: 0 }).withMessage('Number of kids must be a positive integer'),
@@ -81,7 +81,7 @@ app.post(
 
             transporter.sendMail(mailOptions, (error, info) => {
                 if (error) {
-                    console.error(error);
+                    console.log(error);
                     return res.status(500).send('Error sending email');
                 } else {
                     console.log('Email sent: ' + info.response);
@@ -101,7 +101,7 @@ app.post(
         body('name').notEmpty().withMessage('Name is required'),
         body('phone').notEmpty().withMessage('Phone is required'),
         body('email').isEmail().withMessage('Email must be valid'),
-        body('locations').isIn(['Tirupati ', 'Tiruvannamalai ', 'Madurai ', 'Srikalahasthi', 'Kanipakam', 'Kanchipuram', 'Rameswaram', 'Srirangam']).withMessage('Invalid Location'),
+        body('location').isIn(['Tirupati ', 'Tiruvannamalai ', 'Madurai ', 'Srikalahasthi', 'Kanipakam', 'Kanchipuram', 'Rameswaram', 'Srirangam']).withMessage('Invalid Location'),
         body('services').isIn(['Local temple packages', 'Hotel booking', 'Cab booking', 'Only Freshup', 'Tour Guide']).withMessage('Invalid service'),
     ],
     async (req, res) => {

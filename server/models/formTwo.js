@@ -9,7 +9,7 @@ const formTwoSchema = new mongoose.Schema({
         enum: ['Local temple packages', 'Hotel booking', 'Cab booking', 'Only Freshup', 'Tour Guide'],
         required: true
     },
-    locations: {
+    location: {
         type: String,
         enum: ['Tirupati ', 'Tiruvannamalai ', 'Madurai ', 'Srikalahasthi', 'Kanipakam', 'Kanchipuram', 'Rameswaram', 'Srirangam'],
         required: true
