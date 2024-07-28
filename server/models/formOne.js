@@ -14,7 +14,7 @@ const formOneSchema = new mongoose.Schema({
     phone: { type: String, required: true },
     location: {
         type: String,
-        enum: ['Tirupati ', 'Tiruvannamalai ', 'Madurai ', 'Srikalahasthi', 'Kanipakam', 'Kanchipuram', 'Rameswaram', 'Srirangam'],
+        enum: ['Tirupati', 'Tiruvannamalai', 'Madurai', 'Srikalahasthi', 'Kanipakam', 'Kanchipuram', 'Rameswaram', 'Srirangam'],
         required: true
     }
 });
