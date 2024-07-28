@@ -10,7 +10,8 @@ const FormOne = () => {
   const [form] = Form.useForm();
   const [formData, setFormData] = useState({
     name: '',
-    locations: '',
+    phone: '',
+    locations: '', // Changed from 'locations' to 'location'
     services: '',
     travellingDate: '',
     numberOfAdults: 0,
@@ -63,23 +64,28 @@ const FormOne = () => {
       >
         <Input placeholder="Name" onChange={(e) => handleChange('name', e.target.value)} />
       </Form.Item>
+      <Form.Item
+        label="Phone"
+        name="phone"
+        rules={[{ required: true, message: 'Please input your phone!' }]}
+      >
+        <Input placeholder="Name" onChange={(e) => handleChange('phone', e.target.value)} />
+      </Form.Item>
 
       <Form.Item
         label="Location"
-        name="location"
+        name="location" // Changed from 'locations' to 'location'
         rules={[{ required: true, message: 'Please input your location!' }]}
       >
-        {/* <Input placeholder="Location" onChange={(e) => handleChange('locations', e.target.value)} /> */}
-        <Select placeholder="Select a location" onChange={(value) => handleChange('locations', value)}>
-          <Option value="Tirupati ">Tirupati </Option>
-          <Option value="Tiruvannamalai ">Tiruvannamalai </Option>
-          <Option value="Madurai ">Madurai </Option>
-          <Option value="Srikalahasthi ">Srikalahasthi </Option>
-          <Option value="Kanipakam ">Kanipakam </Option>
-          <Option value="Kanchipuram ">Kanchipuram </Option>
-          <Option value="Rameswaram ">Rameswaram </Option>
-          <Option value="Srirangam ">Srirangam </Option>
-
+        <Select placeholder="Select a location" onChange={(value) => handleChange('locations', value)}> {/* Changed from 'locations' to 'location' */}
+          <Option value="Tirupati">Tirupati</Option>
+          <Option value="Tiruvannamalai">Tiruvannamalai</Option>
+          <Option value="Madurai">Madurai</Option>
+          <Option value="Srikalahasthi">Srikalahasthi</Option>
+          <Option value="Kanipakam">Kanipakam</Option>
+          <Option value="Kanchipuram">Kanchipuram</Option>
+          <Option value="Rameswaram">Rameswaram</Option>
+          <Option value="Srirangam">Srirangam</Option>
         </Select>
       </Form.Item>
 

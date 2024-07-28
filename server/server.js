@@ -54,6 +54,7 @@ app.post(
     '/formOne',
     [
         body('name').notEmpty().withMessage('Name is required'),
+        body('phone').notEmpty().withMessage('Phone is required'),
         body('services').isIn(['Local temple packages', 'Hotel booking', 'Cab booking', 'Only Freshup', 'Tour Guide']).withMessage('Invalid service'),
         body('locations').isIn(['Tirupati ', 'Tiruvannamalai ', 'Madurai ', 'Srikalahasthi', 'Kanipakam', 'Kanchipuram', 'Rameswaram', 'Srirangam']).withMessage('Invalid Location'),
         body('travellingDate').isDate().withMessage('Travelling date must be a valid date'),

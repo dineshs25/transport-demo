@@ -10,7 +10,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post('https://transport-demo-p9rh.onrender.com/login', { email, password });
+            const response = await axios.post('https://transport-demo-p9rh.onrender.com/admin/login', { email, password });
             setMessage(response.data);
         } catch (error) {
             setMessage(error.response.data);
