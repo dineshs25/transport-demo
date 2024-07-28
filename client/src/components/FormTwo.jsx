@@ -128,40 +128,40 @@ const ContactForm = () => {
                   />
                 </Form.Item>
 
-               
+
 
                 <Form.Item
-        label="Location"
-        name="location"
-        rules={[{ required: true, message: 'Please input your location!' }]}
-      >
-        {/* <Input placeholder="Location" onChange={(e) => handleChange('locations', e.target.value)} /> */}
-        <Select placeholder="Select a location" onChange={(value) => handleChange('locations', value)}>
-          <Option value="Tirupati ">Tirupati </Option>
-          <Option value="Tiruvannamalai ">Tiruvannamalai </Option>
-          <Option value="Madurai ">Madurai </Option>
-          <Option value="Srikalahasthi ">Srikalahasthi </Option>
-          <Option value="Kanipakam ">Kanipakam </Option>
-          <Option value="Kanchipuram ">Kanchipuram </Option>
-          <Option value="Rameswaram ">Rameswaram </Option>
-          <Option value="Srirangam ">Srirangam </Option>
+                  label="Location"
+                  name="location"
+                  rules={[{ required: true, message: 'Please input your location!' }]}
+                >
+                  {/* <Input placeholder="Location" onChange={(e) => handleChange('locations', e.target.value)} /> */}
+                  <Select placeholder="Select a location" onChange={(value) => handleChange('locations', value)}>
+                    <Option value="Tirupati">Tirupati </Option>
+                    <Option value="Tiruvannamalai ">Tiruvannamalai </Option>
+                    <Option value="Madurai ">Madurai </Option>
+                    <Option value="Srikalahasthi ">Srikalahasthi </Option>
+                    <Option value="Kanipakam ">Kanipakam </Option>
+                    <Option value="Kanchipuram ">Kanchipuram </Option>
+                    <Option value="Rameswaram ">Rameswaram </Option>
+                    <Option value="Srirangam ">Srirangam </Option>
 
-        </Select>
-      </Form.Item>
+                  </Select>
+                </Form.Item>
 
-      <Form.Item
-        label="Services"
-        name="services"
-        rules={[{ required: true, message: 'Please select a service!' }]}
-      >
-        <Select placeholder="Select a service" onChange={(value) => handleChange('services', value)}>
-          <Option value="Local temple packages">Local Temple Packages</Option>
-          <Option value="Hotel booking">Hotel Booking</Option>
-          <Option value="Tour Guide">Tour Guide</Option>
-          <Option value="Cab booking">Local Cab</Option>
-          <Option value="Only Freshup">Only Freshup</Option>
-        </Select>
-      </Form.Item>
+                <Form.Item
+                  label="Services"
+                  name="services"
+                  rules={[{ required: true, message: 'Please select a service!' }]}
+                >
+                  <Select placeholder="Select a service" onChange={(value) => handleChange('services', value)}>
+                    <Option value="Local temple packages">Local Temple Packages</Option>
+                    <Option value="Hotel booking">Hotel Booking</Option>
+                    <Option value="Tour Guide">Tour Guide</Option>
+                    <Option value="Cab booking">Local Cab</Option>
+                    <Option value="Only Freshup">Only Freshup</Option>
+                  </Select>
+                </Form.Item>
 
                 <Form.Item>
                   <Button type="primary" htmlType="submit" className="btn">

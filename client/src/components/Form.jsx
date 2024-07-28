@@ -11,7 +11,7 @@ const FormOne = () => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    locations: '', // Changed from 'locations' to 'location'
+    location: '', // Changed from 'locations' to 'location'
     services: '',
     travellingDate: '',
     numberOfAdults: 0,
@@ -77,7 +77,7 @@ const FormOne = () => {
         name="location" // Changed from 'locations' to 'location'
         rules={[{ required: true, message: 'Please input your location!' }]}
       >
-        <Select placeholder="Select a location" onChange={(value) => handleChange('locations', value)}> {/* Changed from 'locations' to 'location' */}
+        <Select placeholder="Select a location" onChange={(value) => handleChange('location', value)}> {/* Changed from 'locations' to 'location' */}
           <Option value="Tirupati">Tirupati</Option>
           <Option value="Tiruvannamalai">Tiruvannamalai</Option>
           <Option value="Madurai">Madurai</Option>

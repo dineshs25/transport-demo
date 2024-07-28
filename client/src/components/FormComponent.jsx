@@ -54,7 +54,7 @@ const FormComponent = () => {
         />
       </Form.Item>
 
-      <Form.Item label="Location" name="location">
+      <Form.Item label="Locations" name="location">
         <Controller
           name="location"
           control={control}
